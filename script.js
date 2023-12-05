@@ -14,19 +14,38 @@ function createGrid(gridSize) {
       row.append(cell);
     }
   }
-
   return gridContainer;
 }
 
+
 function addElementEventListeners(element) {
+  const colorPicker = document.querySelector('#colorPicker');
+  const ranbow = document.querySelector('#ranbow');
+  const erase = document.querySelector('#erase');
+
+  colorPicker.addEventListener("input", () => {
+    changeBackgroundColor(element, selectColor());
+  });
+
+  ranbow.addEventListener('click', () => {
+    changeBackgroundColor(element, getRandomColor());
+  });
+
+  erase.addEventListener('click', () => {
+    changeBackgroundColor(element, "white");
+  });
+}
+
+function changeBackgroundColor(element, color) {
   element.addEventListener("mouseenter", () => {
-    element.style.backgroundColor = "green";
+    element.style.backgroundColor = color;
   });
 
   element.addEventListener("mouseleave", () => {
-    element.style.backgroundColor = getRandomColor();
+    element.style.backgroundColor = color;
   });
 }
+
 
 function getRandomColor() {
   const r = Math.floor(Math.random() * 256);
@@ -34,6 +53,13 @@ function getRandomColor() {
   const b = Math.floor(Math.random() * 256);
   return `rgb(${r}, ${g}, ${b})`;
 }
+
+function selectColor() {
+  const colorPicker = document.querySelector('#colorPicker');
+  const selectedColor = colorPicker.value;
+  return selectedColor;
+}
+
 
 function getSize() {
   let newSize = prompt("Enter the number of squares per side (up to 100):");
@@ -61,6 +87,16 @@ const resetButton = document.querySelector("#resetButton");
 resetButton.addEventListener('click', getSize);
 
 
-const newGridContainer = createGrid(150);
+const newGridContainer = createGrid(16);
 container = document.querySelector('.container');
 container.append(newGridContainer);
+
+
+const colors = ["#FF5733", "#33FF57", "#5733FF", "#33B5FF"];
+
+// Function to change the background color
+function changePageColor() {
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  document.body.style.backgroundColor = colors[randomIndex];
+}
+setInterval(changePageColor, 3000);
