@@ -1,0 +1,14 @@
+.grid-container {
+  display: flex;
+}
+
+.grid- {
+  display: flex;
+}
+
+.grid-cell {
+  border: 2px solid red;
+  margin: 2px;
+  width: 20px;
+  height: 20px;
+}
