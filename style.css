@@ -45,3 +45,12 @@ body {
   flex-shrink: 1;
 }
 
+.footer-link {
+  color: #333;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
