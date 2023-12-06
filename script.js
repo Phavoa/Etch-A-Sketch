@@ -64,8 +64,8 @@ function selectColor() {
 function getSize() {
   let newSize = prompt("Enter the number of squares per side (up to 100):");
 
-  if (newSize === null || isNaN(newSize) || newSize < 1 || newSize > 150) {
-    alert("Invalid input. Please enter a number between 1 and 150.");
+  if (newSize === null || isNaN(newSize) || newSize < 1 || newSize > 100) {
+    alert("Invalid input. Please enter a number between 1 and 100.");
     return;
   }
 
